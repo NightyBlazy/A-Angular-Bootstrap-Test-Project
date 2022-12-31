@@ -1,0 +1,74 @@
+<section id="tform" class="bg-light">
+<div class="container">
+    <h2 class="text-center"><i class="bi bi-stars"></i>Add Tsundere</h2>
+  
+    <form [formGroup]="tsunAddForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="row my-3 align-items-center justify-content-center">
+        <div class="col-8 col-lg-4 col-xl-3 mt-3">     
+      <div class="form-group mb-1">
+        <label>Character Name-Surname</label>
+        <input type="text" formControlName="tsunName" [class.is-invalid]="tsunName.invalid && tsunName.dirty" 
+        class="form-control shadow-sm" name="tsunName" >
+        <small class= "text-danger" [class.d-none] ="tsunName.valid || tsunName.pristine">Character has to have a name!</small>
+      </div>
+        </div> 
+  
+        
+      <div class="col-8 col-lg-4 col-xl-3 mb-1 mt-3">
+        <label>Gender</label>
+        <div class="form-check">
+          <input type="radio" class="form-check-input shadow-sm" name="Gender" formControlName="Gender" value="female">
+          <label class="form-check-label">Female</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input shadow-sm" name="Gender" formControlName="Gender" value="male">
+          <label class="form-check-label">Male</label>
+        </div>
+      </div>
+  
+      <div class="col-8 col-lg-4 col-xl-3 mt-3"> 
+      <div class="form-group mb-1">
+        <label>Affiliation</label>
+        <input type="text" class="form-control shadow-sm" formControlName="Affiliation" >
+      </div>
+        </div>
+        </div>
+
+        <div class="row my-3 align-items-center justify-content-center">
+        <div class="col-8 col-lg-4 col-xl-3 mt-3">
+      <div class="form-group mb-1">
+        <label>Hair Style</label>
+        <input type="text" required [class.is-invalid]="hairStyle.invalid && hairStyle.dirty" 
+        class="form-control shadow-sm" formControlName="hairStyle" >
+        <small class= "text-danger" [class.d-none] ="hairStyle.valid || hairStyle.pristine">Character has to have a hair, righ?! Unless you have a thing for bald ones...</small>
+      </div>
+    </div>
+      
+    <div class="col-8 col-lg-4 col-xl-3 mt-3">
+      <div class="form-group mb-1">
+        <label>Hair Color</label>
+        <input type="text"required [class.is-invalid]="hairColor.invalid && hairColor.dirty" 
+        class="form-control shadow-sm" formControlName="hairColor">
+        <small class= "text-danger" [class.d-none] ="hairColor.valid || hairColor.pristine">Character's hair has to have a hair color, righ?!</small>
+      </div>
+    </div>
+  
+      
+    <div class="col-8 col-lg-4 col-xl-3 mt-3">
+      <div class="form-group mb-1">
+        <label>Tsundere Type</label>
+        <select [class.is-invalid]= "Type.invalid && Type.touched"  class="form-select shadow-sm" formControlName="Type">
+          <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+        </select>
+        <small class="text-danger" [class.d-none]="!Type.invalid || Type.untouched">Tsundere's has to have a type!</small>
+      </div>
+    </div>
+    <div class="mt-3 mb-3 text-center">
+      <button [disabled]="tsunAddForm.invalid || Type.invalid" class="btn btn-primary" type="submit">Submit</button>
+    </div>
+
+    </div>
+
+    </form>
+</div>
+</section>
